@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.vs/
+
+tsconfig.json
+package-lock.json
