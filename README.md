@@ -57,8 +57,6 @@ tryMe<AppComponent>(() => Number['f1'](), {
 });
 ```
 
----
-
 ## In the future
 * Async Ability
 * Generic Ability
@@ -71,7 +69,7 @@ tryMe<AppComponent>(() => Number['f1'](), {
 Have a bug? Want a meaningful feature? Anything you need?  
 Well, I do apologize. Feel free and __Pull Req__ and I might permit it.
 
-A little help ?  
+## A little help ?  
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/netanel0058)
 
