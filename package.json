@@ -1,7 +1,7 @@
 {
   "name": "ntn-try-me",
   "version": "1.0.1",
-  "description": "try-me help Eliminate regular, tangled and heavy try-catch-finally",
+  "description": " try-me help Eliminate regular, tangled and heavy try-catch-finally",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Netanel Tal Nizri",
@@ -16,7 +16,9 @@
     "Mini",
     "Helper",
     "Utility",
-    "Tiny"
+    "Tiny",
+    "front-end",
+    "backend"
   ],
   "repository": {
     "type": "git",

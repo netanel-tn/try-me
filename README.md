@@ -39,14 +39,14 @@ You will be able to gain the following:
 ### Example1
 
 ```Typescript
-import { tryMe } from 'try-me';
+import { tryMe } from 'ntn-try-me';
 
 tryMe(() => { });
 ```
 ### Example2
 
 ```Typescript
-import { tryMe } from 'try-me';
+import { tryMe } from 'ntn-try-me';
 
 tryMe<AppComponent>(() => Number['f1'](), {
     valid: () => console.log('Great!'),
@@ -70,7 +70,6 @@ Have a bug? Want a meaningful feature? Anything you need?
 Well, I do apologize. Feel free and __Pull Req__ and I might permit it.
 
 ## A little help ?  
-
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/netanel0058)
 
 ## Many Thanx!
