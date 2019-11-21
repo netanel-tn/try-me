@@ -1,5 +1,5 @@
 {
-  "name": "try-me",
+  "name": "ntn-try-me",
   "version": "1.0.0",
   "description": "try-me help Eliminate regular, tangled and heavy try-catch-finally",
   "main": "dist/index.js",
@@ -15,7 +15,7 @@
     "TypeScript",
     "Mini",
     "Helper",
-    "Uility",
+    "Utility",
     "Tiny"
   ],
   "repository": {
@@ -24,5 +24,6 @@
   },
   "devDependencies": {
     "typescript": "3.7.2"
-  }
+  },
+  "dependencies": {}
 }

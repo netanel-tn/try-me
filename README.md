@@ -2,7 +2,7 @@
 - This package is not ready yet. Please wait until this line is removed.
 ```
 
-# try-me
+# ntn-try-me
 <b>try-me</b> is a __tiny utility__.  
 <b>try-me</b> help Eliminate regular, tangled and heavy __try-catch-finally__.  
 With the aim to help you with error handling.
@@ -14,7 +14,7 @@ You will be able to gain the following:
 ---
 
 ## Prepare
-`npm i try-me -P`
+`npm i ntn-try-me -P`
 
 ---
 
@@ -45,11 +45,7 @@ You will be able to gain the following:
 ```Typescript
 import { tryMe } from 'try-me';
 
-tryMe<AppComponent>(() => { }, {
-    valid: () => { },
-    fail: (e: AppComponent) => { },
-    finalize: () => { }
-});
+tryMe(() => { });
 ```
 ### Example2
 
@@ -74,13 +70,10 @@ tryMe<AppComponent>(() => Number['f1'](), {
 * Test Environment Ability
 * Minification Ability
 * And more...
----
 
 ## Git
 Have a bug? Want a meaningful feature? Anything you need?  
 Well, I do apologize. Feel free and __Pull Req__ and I might permit it.
-
----
 
 ## 📄 License
 [MIT](https://choosealicense.com/licenses/mit/)
@@ -92,5 +85,7 @@ A little help ?
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/netanel0058)
 
 ---
+
+> By Netanel Tal Nizri / ntn
 
 ## Many Thanx!
