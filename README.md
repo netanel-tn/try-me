@@ -3,6 +3,8 @@
 ```
 
 # ntn-try-me
+![npm](https://img.shields.io/npm/v/ntn-try-me?color=blue&style=flat-square) ![NPM](https://img.shields.io/npm/l/ntn-try-me?color=blue&style=flat-square)
+
 <b>try-me</b> is a __tiny utility__.  
 <b>try-me</b> help Eliminate regular, tangled and heavy __try-catch-finally__.  
 With the aim to help you with error handling.
@@ -68,11 +70,6 @@ tryMe<AppComponent>(() => Number['f1'](), {
 ## Git
 Have a bug? Want a meaningful feature? Anything you need?  
 Well, I do apologize. Feel free and __Pull Req__ and I might permit it.
-
-## 📄 License
-[MIT](https://choosealicense.com/licenses/mit/)
-
----
 
 A little help ?  
 
