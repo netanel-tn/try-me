@@ -11,12 +11,8 @@ You will be able to gain the following:
 * A more intelligent code
 * More flexibility
 
----
-
 ## Prepare
 `npm i ntn-try-me -P`
-
----
 
 ## API
 
@@ -35,8 +31,6 @@ You will be able to gain the following:
 <b>tryThat</b>: ✔️ Required
 <b>meta</b>: ❌ Required, {}
 </pre>
-
----
 
 ## Example
 
@@ -83,9 +77,5 @@ Well, I do apologize. Feel free and __Pull Req__ and I might permit it.
 A little help ?  
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/netanel0058)
-
----
-
-> By Netanel Tal Nizri / ntn
 
 ## Many Thanx!
