@@ -13,8 +13,8 @@ You will be able to gain the following:
 * A more intelligent code
 * More flexibility
 
-## Prepare
-`npm i ntn-try-me -P`
+## Get ready
+`npm i ntn-try-me`
 
 ## API
 
@@ -36,14 +36,17 @@ You will be able to gain the following:
 
 ## Example
 
-### Example1
-
 ```Typescript
 import { tryMe } from 'ntn-try-me';
 
 tryMe(() => { });
 ```
-### Example2
+
+```Typescript
+import { _try } from 'ntn-try-me'; // Lighter
+
+_try(() => { });
+```
 
 ```Typescript
 import { tryMe } from 'ntn-try-me';

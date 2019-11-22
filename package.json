@@ -1,13 +1,14 @@
 {
   "name": "ntn-try-me",
   "version": "1.0.2",
-  "description": " try-me help Eliminate regular, tangled and heavy try-catch-finally",
+  "description": "Eliminate regular, tangled and heavy try-catch-finally",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Netanel Tal Nizri",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "pub": "npm version patch & git push -u origin master & npm publish"
   },
   "bin": {},
   "keywords": [
