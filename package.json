@@ -1,7 +1,7 @@
 {
   "name": "ntn-try-me",
   "version": "1.0.3",
-  "description": "Eliminate regular, tangled and heavy try-catch-finally",
+  "description": "Eliminate regular `try-catch-finally`",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Netanel Tal Nizri",

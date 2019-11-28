@@ -34,8 +34,7 @@ You will be able to gain the following:
 <b>meta</b>: ❌ Required, {}
 </pre>
 
-## Example
-
+## Need an Example ?
 ```Typescript
 import { tryMe } from 'ntn-try-me';
 
@@ -51,9 +50,9 @@ _try(() => { });
 ```Typescript
 import { tryMe } from 'ntn-try-me';
 
-tryMe<AppComponent>(() => Number['f1'](), {
+tryMe<MyErr>(() => Number['f1'](), {
     valid: () => console.log('Great!'),
-    fail: (e: AppComponent) => console.log('Bummer...'),
+    fail: (e: MyErr) => console.log('Bummer...'),
     ifFailFireErr: true,
     fireErrUniqType: TypeError,
     finalize: () => console.log('We did it.')
@@ -75,4 +74,4 @@ Well, I do apologize. Feel free and __Pull Req__ and I might permit it.
 ## A little help ?  
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/netanel0058)
 
-## Many Thanx!
+### Many Thanx!
