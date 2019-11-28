@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
+    "test": "jasmine",
     "pub": "npm version patch & git push -u origin master & npm publish"
   },
   "bin": {},
@@ -25,8 +26,9 @@
     "type": "git",
     "url": "github:netanel-tn/try-me"
   },
+  "dependencies": {},
   "devDependencies": {
-    "typescript": "3.7.2"
-  },
-  "dependencies": {}
+    "typescript": "3.7.2",
+    "jasmine": "3.5.0"
+  }
 }

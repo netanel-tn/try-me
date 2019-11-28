@@ -61,11 +61,8 @@ tryMe<MyErr>(() => Number['f1'](), {
 
 ## In the future
 * Async Ability
-* Generic Ability
 * Fluent API Ability
 * Test Environment Ability
-* Minification Ability
-* And more...
 
 ## Git
 Have a bug? Want a meaningful feature? Anything you need?  

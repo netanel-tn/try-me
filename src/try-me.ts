@@ -1,9 +1,9 @@
-
 export interface ITryMe<E = any> {
-    valid: Function,
+    fluentApi: boolean,
+    valid: () => void,
     fail: (e: E) => void,
-    finalize: Function,
-    debugLevel: 1,
+    finalize: () => void,
+    debugLevel: 'quiet',
     // Fail Handling
     ifFailFireErr: boolean,
     fireErrUniqType: any,
