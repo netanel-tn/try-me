@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "npm-hub": "javascript"
+    },
+    "files.exclude": {
+        ".npmrc": true,
+        ".vscode": true,
+        "node_modules": true,
+        "package-lock.json": true
+    }
+}

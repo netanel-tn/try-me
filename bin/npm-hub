@@ -1,0 +1,101 @@
+import glob from 'glob';
+import { readFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
+import m from 'moment';
+import terser from 'terser';
+import bundle from 'webpack';
+
+// -------------- Fix --------------
+const { sync } = glob;
+const { minify: _minify } = terser;
+const __dirname = resolve();
+
+const BUNDLE_FILE_NAME = 'bundle.js';
+const LINE = '--------------';
+const ERR = '`argv` are invalid!';
+const UTF = 'utf8';
+const F = 'DD-MM-YYYY HH:mm:ss:SS';
+const { argv } = process;
+
+// ...
+
+if (!argv) throw new Error(ERR);
+
+const type = argv.find(x => x.startsWith('--type=')).replace('--type=', '');
+const allJ = sync('./dist/*.js');
+
+if (!type) throw new Error(ERR);
+
+// ...
+
+const finalizeFn = () => console.log(LINE, 'END  ', '\x1b[36m', m().format(F), '\x1b[0m', LINE);
+
+const minifyFn = () => {
+  const filterAllJ = allJ.filter(x => !x.includes(BUNDLE_FILE_NAME))
+    .filter(x => !x.endsWith('.spec.js'));
+
+  filterAllJ.forEach(x => {
+    const data = _minify(readFileSync(x, UTF), {}).code;
+
+    writeFileSync(x, data, UTF);
+  });
+
+  finalizeFn();
+};
+
+const bundleFn = type => {
+  const beginFn = prepareBundle => prepareBundle.run((a, b) => finalizeFn());
+
+  switch (type) {
+    case 'bundle': {
+      const entry = allJ.filter(x => !x.includes(BUNDLE_FILE_NAME))
+        .filter(x => !x.endsWith('.spec.js'));
+
+      const prepareBundle = bundle({
+        mode: 'production',
+        entry,
+        output: {
+          path: resolve(__dirname, 'dist'),
+          filename: BUNDLE_FILE_NAME,
+          library: 'ntn_try_me',
+          libraryTarget: 'var'
+        }
+      });
+
+      return beginFn(prepareBundle);
+    }
+    case 'bundleDev': {
+      const entry = allJ.filter(x => !x.includes(BUNDLE_FILE_NAME));
+
+      const prepareBundle = bundle({
+        mode: 'production',
+        entry,
+        output: {
+          path: resolve(__dirname, 'dist'),
+          filename: BUNDLE_FILE_NAME,
+          library: 'ntn_try_me',
+          libraryTarget: 'var'
+        }
+      });
+
+      return beginFn(prepareBundle);
+    }
+  }
+};
+
+// ...
+
+console.log(LINE, 'Might be a', '\x1b[33mTemp Warning', '\x1b[0m');
+console.log(LINE, 'BEGIN', '\x1b[36m', m().format(F), '\x1b[0m', LINE);
+
+switch (type) {
+  case 'minify':
+    minifyFn();
+    break;
+  case 'bundle':
+  case 'bundleDev':
+    bundleFn(type);
+    break;
+  default:
+    throw new Error(ERR);
+}

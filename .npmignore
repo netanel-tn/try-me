@@ -1,7 +1,3 @@
 node_modules/
-dist/*.js
 src/
 .vs/
-
-tsconfig.json
-package-lock.json

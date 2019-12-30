@@ -3,7 +3,9 @@
 ```
 
 # ntn-try-me
-![npm](https://img.shields.io/npm/v/ntn-try-me?color=blue&style=flat-square) ![NPM](https://img.shields.io/npm/l/ntn-try-me?color=blue&style=flat-square)
+[![npm](https://img.shields.io/npm/v/ntn-try-me?color=blue&style=flat-square)](https://www.npmjs.com/package/ntn-try-me)
+![npm](https://img.shields.io/npm/l/ntn-try-me?color=blue&style=flat-square)
+![npm](https://img.shields.io/badge/MINIFIED%20%2B%20GZIPPED-4KB+-brightgreen?style=flat-square)
 
 <b>try-me</b> is a __tiny utility__.  
 <b>try-me</b> help Eliminate regular, tangled and heavy __try-catch-finally__.  
@@ -15,6 +17,8 @@ You will be able to gain the following:
 
 ## Get ready
 `npm i ntn-try-me`
+
+unpkg.com/ntn-try-me/bundle
 
 ## API
 
@@ -62,7 +66,6 @@ tryMe<MyErr>(() => Number['f1'](), {
 ## In the future
 * Async Ability
 * Fluent API Ability
-* Test Environment Ability
 
 ## Git
 Have a bug? Want a meaningful feature? Anything you need?  

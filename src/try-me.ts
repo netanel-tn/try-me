@@ -35,4 +35,9 @@ export const tryMe = <E>(tryThat: Function, meta: Partial<ITryMe<E>> = {}) => {
     }
 }
 
+module aaa{
+    export default {};
+}
+
 export { tryMe as _try };
+export default {};

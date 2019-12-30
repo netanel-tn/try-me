@@ -2,16 +2,22 @@
   "name": "ntn-try-me",
   "version": "1.0.4",
   "description": "Eliminate regular `try-catch-finally`",
+  "type": "module",
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Netanel Tal Nizri",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "jasmine",
-    "pub": "npm version patch & git push -u origin master & npm publish"
+    "hub": "node --experimental-modules --no-warnings bin/npm-hub",
+    "preminify1": "npm run build",
+    "minify": "npm run hub -- --type=minify",
+    "bundle": "npm run hub -- --type=bundle",
+    "bundleDev": "npm run hub -- --type=bundleDev",
+    "test": "jasmine --config=jasmine.json",
+    "pub": "npm version patch & git push -u origin master & npm publish & echo Great!"
   },
-  "bin": {},
   "keywords": [
     "JavaScript",
     "TypeScript",
@@ -28,7 +34,12 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "typescript": "3.7.2",
+    "@types/node": "12.12.18",
+    "@types/jasmine": "3.5.0",
+    "moment": "2.24.0",
+    "terser": "4.4.3",
+    "webpack": "4.41.5",
+    "typescript": "3.7.4",
     "jasmine": "3.5.0"
   }
 }
