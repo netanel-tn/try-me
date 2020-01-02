@@ -11,12 +11,11 @@
   "scripts": {
     "build": "tsc",
     "hub": "node --experimental-modules --no-warnings bin/npm-hub",
-    "preminify1": "npm run build",
     "minify": "npm run hub -- --type=minify",
     "bundle": "npm run hub -- --type=bundle",
     "bundleDev": "npm run hub -- --type=bundleDev",
     "test": "jasmine --config=jasmine.json",
-    "pub": "npm version patch & git push -u origin master & npm publish & echo Great!"
+    "bump": "npm version patch & git push -u origin master & npm publish"
   },
   "keywords": [
     "JavaScript",
@@ -32,7 +31,6 @@
     "type": "git",
     "url": "github:netanel-tn/try-me"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/node": "12.12.18",
     "@types/jasmine": "3.5.0",

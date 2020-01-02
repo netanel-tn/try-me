@@ -7,7 +7,7 @@ import bundle from 'webpack';
 
 // -------------- Fix --------------
 const { sync } = glob;
-const { minify: _minify } = terser;
+const { minify } = terser;
 const __dirname = resolve();
 
 const BUNDLE_FILE_NAME = 'bundle.js';
@@ -15,16 +15,27 @@ const LINE = '--------------';
 const ERR = '`argv` are invalid!';
 const UTF = 'utf8';
 const F = 'DD-MM-YYYY HH:mm:ss:SS';
-const { argv } = process;
+const { argv, exit } = process;
+
+class VerHandling {
+  static Verify(argv) {
+    if (argv.find(x => x === 'v' || x === '--v')) { // `v` Might be Temp
+      const readFile = readFileSync('./package.json', UTF);
+      const { version: v } = JSON.parse(readFile);
+      console.log(`v` + v);
+
+      exit();
+    }
+  }
+}
 
 // ...
 
 if (!argv) throw new Error(ERR);
 
+VerHandling.Verify(argv);
 const type = argv.find(x => x.startsWith('--type=')).replace('--type=', '');
 const allJ = sync('./dist/*.js');
-
-if (!type) throw new Error(ERR);
 
 // ...
 
@@ -35,7 +46,7 @@ const minifyFn = () => {
     .filter(x => !x.endsWith('.spec.js'));
 
   filterAllJ.forEach(x => {
-    const data = _minify(readFileSync(x, UTF), {}).code;
+    const data = minify(readFileSync(x, UTF), {}).code;
 
     writeFileSync(x, data, UTF);
   });
@@ -44,7 +55,7 @@ const minifyFn = () => {
 };
 
 const bundleFn = type => {
-  const beginFn = prepareBundle => prepareBundle.run((a, b) => finalizeFn());
+  const igniteFn = prepareBundle => prepareBundle.run(_ => finalizeFn());
 
   switch (type) {
     case 'bundle': {
@@ -55,14 +66,15 @@ const bundleFn = type => {
         mode: 'production',
         entry,
         output: {
-          path: resolve(__dirname, 'dist'),
-          filename: BUNDLE_FILE_NAME,
+          // path: resolve(__dirname, 'bundle'),
+          // path:'.',
+          filename: './bundle/' + BUNDLE_FILE_NAME,
           library: 'ntn_try_me',
           libraryTarget: 'var'
         }
       });
 
-      return beginFn(prepareBundle);
+      return igniteFn(prepareBundle);
     }
     case 'bundleDev': {
       const entry = allJ.filter(x => !x.includes(BUNDLE_FILE_NAME));
@@ -78,7 +90,7 @@ const bundleFn = type => {
         }
       });
 
-      return beginFn(prepareBundle);
+      return igniteFn(prepareBundle);
     }
   }
 };
