@@ -18,7 +18,7 @@ You will be able to gain the following:
 ## Get ready
 `npm i ntn-try-me`
 
-unpkg.com/ntn-try-me/bundle/bundle
+[unpkg.com/ntn-try-me/bundle/bundle](unpkg.com/ntn-try-me/bundle/bundle)
 
 ## API
 
