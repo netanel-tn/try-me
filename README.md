@@ -64,14 +64,8 @@ tryMe<MyErr>(() => Number['f1'](), {
 ```
 
 ## In the future
-* Async Ability
-* Fluent API Ability
-
-## Git
-Have a bug? Want a meaningful feature? Anything you need?  
-Well, I do apologize. Feel free and __Pull Req__ and I might permit it.
+* <u>Async</u>
+* Fluent API
 
 ## A little help ?  
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/netanel0058)
-
-### Many Thanx!

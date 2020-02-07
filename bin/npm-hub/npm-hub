@@ -1,9 +1,10 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { resolve, resolve as r } from 'path';
 import glob from 'glob';
 import terser from 'terser';
 import bundle from 'webpack';
-import m from 'moment';
+import { argv, exit } from 'process';
+import { LINE, UTF, newDateWithMagenta } from './general.js';
+import { readFileSync, writeFileSync } from 'fs';
+import { resolve, resolve as r } from 'path';
 
 // -------------- Fix --------------
 const { sync } = glob;
@@ -11,11 +12,7 @@ const { minify } = terser;
 const [__dirname, dir] = [, ,].fill(resolve());
 
 const BUNDLE_FILE_NAME = 'bundle.js';
-const LINE = '--------------';
 const ERR = '`argv` are invalid!';
-const UTF = 'utf8';
-const F = 'DD-MM-YYYY HH:mm:ss:SS';
-const { argv, exit } = process;
 
 class VerHandling {
   static Verify(argv) {
@@ -41,16 +38,6 @@ class TypeHandling {
   }
 }
 
-class FG {
-  static get Blue() {
-    return `\x1b[36m`;
-  }
-
-  static get Default() {
-    return `\x1b[0m`;
-  }
-}
-
 // ...
 
 VerHandling.Verify(argv);
@@ -59,8 +46,7 @@ const allJ = sync('./dist/*.js');
 
 // ...
 
-const finalizeFn = () => console.log(LINE, 'END  ', FG.Blue, m().format(F)
-  , FG.Default, LINE);
+const finalizeFn = () => console.log(LINE, 'END  ', newDateWithMagenta(), LINE);
 
 const pathFile = (path, filename) => ({ path: r(dir, path), filename });
 
@@ -82,8 +68,7 @@ const bundleFn = type => {
 
   switch (type) {
     case 'bundle': {
-      const entry = allJ.filter(x => !x.includes(BUNDLE_FILE_NAME))
-        .filter(x => !x.endsWith('.spec.js'));
+      const entry = allJ.filter(x => !x.endsWith('.spec.js'));
 
       const prepareBundle = bundle({
         mode: 'production',
@@ -117,8 +102,7 @@ const bundleFn = type => {
 
 // ...
 
-console.log(LINE, 'BEGIN', FG.Blue, m().format(F)
-  , FG.Default, LINE);
+console.log(LINE, 'BEGIN', newDateWithMagenta(), LINE);
 
 switch (type) {
   case 'minify':

@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "hub": "node --experimental-modules --no-warnings bin/npm-hub",
+    "hub": "node --experimental-modules --no-warnings bin/npm-hub/npm-hub",
     "minify": "npm run hub -- --type=minify",
     "bundle": "npm run hub -- --type=bundle",
     "bundleDev": "npm run hub -- --type=bundleDev",
@@ -32,13 +32,15 @@
     "url": "github:netanel-tn/try-me"
   },
   "devDependencies": {
-    "@types/node": "12.12.18",
-    "@types/jasmine": "3.5.0",
-    "@types/webpack": "4.41.1",
+    "@types/node": "13.7.0",
+    "@types/jasmine": "3.5.3",
+    "@types/webpack": "4.41.5",
     "moment": "2.24.0",
-    "terser": "4.4.3",
+    "terser": "4.6.3",
     "webpack": "4.41.5",
-    "typescript": "3.7.4",
-    "jasmine": "3.5.0"
+    "rxjs": "6.5.4",
+    "typescript": "3.7.5",
+    "jasmine": "3.5.0",
+    "colors": "1.4.0"
   }
 }
