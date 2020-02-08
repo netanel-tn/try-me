@@ -1,3 +1,4 @@
+mine-private/
 node_modules/
 dist/dev/
 dist/*.spec

@@ -66,6 +66,3 @@ tryMe<MyErr>(() => Number['f1'](), {
 ## In the future
 * <u>Async</u>
 * Fluent API
-
-## A little help ?  
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/netanel0058)
