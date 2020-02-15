@@ -10,12 +10,12 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "hub": "node --experimental-modules --no-warnings bin/npm-hub/npm-hub",
-    "minify": "npm run hub -- --type=minify",
-    "bundle": "npm run hub -- --type=bundle",
-    "bundleDev": "npm run hub -- --type=bundleDev",
-    "test": "jasmine --no-color --config=jasmine.json",
-    "bump": "npm version patch & git push -u origin master & npm publish"
+    "npm-hub": "node --experimental-modules --no-warnings build/npm-hub",
+    "minify": "npm run npm-hub -- --type=minify",
+    "bundle": "npm run npm-hub -- --type=bundle",
+    "bundleDev": "npm run npm-hub -- --type=bundleDev",
+    "test": "jasmine --config=jasmine.json",
+    "bump": "npm version patch && git push -u origin master && npm publish"
   },
   "keywords": [
     "JavaScript",
@@ -32,8 +32,8 @@
     "url": "github:netanel-tn/try-me"
   },
   "devDependencies": {
-    "@types/node": "13.7.0",
     "@types/jasmine": "3.5.3",
+    "@types/node": "13.7.0",
     "@types/webpack": "4.41.5",
     "moment": "2.24.0",
     "terser": "4.6.3",

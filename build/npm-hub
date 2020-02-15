@@ -1,18 +1,17 @@
 import glob from 'glob';
 import terser from 'terser';
+import tsc from 'typescript';
 import bundle from 'webpack';
 import { argv, exit } from 'process';
-import { LINE, UTF, newDateWithMagenta } from './general.js';
+import { LINE, UTF, ERR_ARGV, newDateMagenta, pathFile, begin } from './util.js';
 import { readFileSync, writeFileSync } from 'fs';
-import { resolve, resolve as r } from 'path';
 
 // -------------- Fix --------------
 const { sync } = glob;
 const { minify } = terser;
-const [__dirname, dir] = [, ,].fill(resolve());
 
 const BUNDLE_FILE_NAME = 'bundle.js';
-const ERR = '`argv` are invalid!';
+console.log(tsc);
 
 class VerHandling {
   static Verify(argv) {
@@ -28,11 +27,11 @@ class VerHandling {
 
 class TypeHandling {
   static Verify(argv) {
-    if (!argv) throw new Error(ERR);
+    if (!argv) throw new Error(ERR_ARGV);
 
     const type = argv.find(x => x.startsWith('--type='));
 
-    if (!type) throw new Error(ERR);
+    if (!type) throw new Error(ERR_ARGV);
 
     return type.replace('--type=', '');
   }
@@ -46,9 +45,7 @@ const allJ = sync('./dist/*.js');
 
 // ...
 
-const finalizeFn = () => console.log(LINE, 'END  ', newDateWithMagenta(), LINE);
-
-const pathFile = (path, filename) => ({ path: r(dir, path), filename });
+const finalizeFn = () => console.log(LINE, 'END  ', newDateMagenta(), LINE);
 
 const minifyFn = () => {
   const filterAllJ = allJ.filter(x => !x.includes(BUNDLE_FILE_NAME))
@@ -64,15 +61,13 @@ const minifyFn = () => {
 };
 
 const bundleFn = type => {
-  const igniteFn = prepareBundle => prepareBundle.run(_ => finalizeFn());
+  const igniteFn = prepareBundle => prepareBundle.run(() => finalizeFn());
 
   switch (type) {
     case 'bundle': {
-      const entry = allJ.filter(x => !x.endsWith('.spec.js'));
-
       const prepareBundle = bundle({
         mode: 'production',
-        entry,
+        entry: './dist/index.js',
         output: {
           ...pathFile('bundle', BUNDLE_FILE_NAME),
           library: 'ntn_try_me',
@@ -102,7 +97,7 @@ const bundleFn = type => {
 
 // ...
 
-console.log(LINE, 'BEGIN', newDateWithMagenta(), LINE);
+begin();
 
 switch (type) {
   case 'minify':
@@ -113,5 +108,5 @@ switch (type) {
     bundleFn(type);
     break;
   default:
-    throw new Error(ERR);
+    throw new Error(ERR_ARGV);
 }
