@@ -1,7 +1,7 @@
 {
   "spec_dir": "dist/dev",
   "spec_files": [
-    "bundle.js"
+    "bundle"
   ],
   "stopSpecOnExpectationFailure": false,
   "random": false

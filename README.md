@@ -54,7 +54,7 @@ _try(() => { });
 ```Typescript
 import { tryMe } from 'ntn-try-me';
 
-tryMe<MyErr>(() => Number['f1'](), {
+tryMe<MyErr>(() => Number['myFn'](), {
     valid: () => console.log('Great!'),
     fail: (e: MyErr) => console.log('Bummer...'),
     ifFailFireErr: true,
@@ -64,5 +64,5 @@ tryMe<MyErr>(() => Number['f1'](), {
 ```
 
 ## In the future
-* <u>Async</u>
+* __Async__
 * Fluent API

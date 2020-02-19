@@ -1,13 +1,27 @@
-import { tryMe } from "./try-me";
+import { tryMe } from './try-me';
+import { metName } from './util';
 
-describe('ab', () => {
-    it('a', () => {
-        tryMe(() => { });
-        expect(0).toBe(0);
+describe(metName('tryMe'), () => {
+    it('should throw an exception and swallow it.', () => {
+        try {
+            tryMe(() => Array()[<any>'myFn']());
+        }
+        catch (e) {
+            return fail(1);
+        }
+
+        expect(1).toBe(1);
     });
 
-    it('b', () => {
-        tryMe(() => { });
-        expect(1).toBe(0);
+    it('should throw an exception and throw it back.', () => {
+        return fail(1);
+        try {
+            tryMe(() => Array()[<any>'myFn'](), { ifFailFireErr: true });
+        }
+        catch (e) {
+            return expect(1).toBe(1);
+        }
+
+        fail(1);
     });
 });

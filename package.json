@@ -9,11 +9,13 @@
   "author": "Netanel Tal Nizri",
   "license": "MIT",
   "scripts": {
+    "prebuild": "tsc",
     "build": "tsc",
     "npm-hub": "node --experimental-modules --no-warnings build/npm-hub",
     "minify": "npm run npm-hub -- --type=minify",
     "bundle": "npm run npm-hub -- --type=bundle",
     "bundleDev": "npm run npm-hub -- --type=bundleDev",
+    "pretest": "npm run build && npm run bundleDev",
     "test": "jasmine --config=jasmine.json",
     "bump": "npm version patch && git push -u origin master && npm publish"
   },
@@ -35,6 +37,7 @@
     "@types/jasmine": "3.5.3",
     "@types/node": "13.7.0",
     "@types/webpack": "4.41.5",
+    "npm": "6.13.7",
     "moment": "2.24.0",
     "terser": "4.6.3",
     "webpack": "4.41.5",

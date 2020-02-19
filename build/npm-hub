@@ -1,7 +1,7 @@
 import glob from 'glob';
 import terser from 'terser';
-import tsc from 'typescript';
 import bundle from 'webpack';
+import npm from 'npm';
 import { argv, exit } from 'process';
 import { LINE, UTF, ERR_ARGV, newDateMagenta, pathFile, begin } from './util.js';
 import { readFileSync, writeFileSync } from 'fs';
@@ -11,7 +11,6 @@ const { sync } = glob;
 const { minify } = terser;
 
 const BUNDLE_FILE_NAME = 'bundle.js';
-console.log(tsc);
 
 class VerHandling {
   static Verify(argv) {
@@ -78,13 +77,11 @@ const bundleFn = type => {
       return igniteFn(prepareBundle);
     }
     case 'bundleDev': {
-      const entry = allJ.filter(x => !x.includes(BUNDLE_FILE_NAME));
-
       const prepareBundle = bundle({
         mode: 'production',
-        entry,
+        entry: allJ,
         output: {
-          ...pathFile('dist/dev', BUNDLE_FILE_NAME),
+          ...pathFile('dist/dev', 'bundle'),
           library: 'ntn_try_me',
           libraryTarget: 'var'
         }
@@ -100,12 +97,14 @@ const bundleFn = type => {
 begin();
 
 switch (type) {
-  case 'minify':
-    minifyFn();
-    break;
   case 'bundle':
   case 'bundleDev':
     bundleFn(type);
+    break;
+  case 'minify':
+    minifyFn();
+    break;
+  case 'multiple':
     break;
   default:
     throw new Error(ERR_ARGV);
