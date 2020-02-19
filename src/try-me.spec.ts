@@ -14,7 +14,6 @@ describe(metName('tryMe'), () => {
     });
 
     it('should throw an exception and throw it back.', () => {
-        return fail(1);
         try {
             tryMe(() => Array()[<any>'myFn'](), { ifFailFireErr: true });
         }
