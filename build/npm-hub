@@ -71,7 +71,10 @@ const bundleFn = type => {
           ...pathFile('bundle', BUNDLE_FILE_NAME),
           library: 'ntn_try_me',
           libraryTarget: 'var'
-        }
+        },
+        plugins: [
+          new bundle.BannerPlugin('ntn-try-me' + '\nBy Netanel Tal Nizri')
+        ]
       });
 
       return igniteFn(prepareBundle);
