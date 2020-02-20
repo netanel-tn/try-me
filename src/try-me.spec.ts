@@ -1,5 +1,5 @@
-import { tryMe } from './try-me';
 import { metName } from './util';
+import { tryMe } from './try-me';
 
 describe(metName('tryMe'), () => {
     it('should throw an exception and swallow it.', () => {
