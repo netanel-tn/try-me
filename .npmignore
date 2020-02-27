@@ -1,6 +1,10 @@
+.vscode/
 bin/
+build/
 mine-private/
 node_modules/
 dist/dev/
 dist/*.spec
 src/
+jasmine.json
+tsconfig.json

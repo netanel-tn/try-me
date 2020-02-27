@@ -13,6 +13,7 @@ export interface ITryMe<E = any> {
 export const tryMe = <E>(tryThat: Function, meta: Partial<ITryMe<E>> = {}) => {
     const { valid, fail, finalize, ifFailFireErr, fireErrUniqType
         , fireErrData } = meta;
+    let hadErr = false;
 
     try {
         tryThat();
