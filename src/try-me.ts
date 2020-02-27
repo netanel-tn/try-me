@@ -23,6 +23,8 @@ export const tryMe = <E>(tryThat: Function, meta: Partial<ITryMe<E>> = {}) => {
     catch (e) {
         fail && fail(e);
 
+        hadErr = true;
+
         if (ifFailFireErr) {
             if (!fireErrUniqType || (fireErrUniqType && e instanceof fireErrUniqType)) {
                 if (fireErrData) throw fireErrData;
@@ -33,6 +35,10 @@ export const tryMe = <E>(tryThat: Function, meta: Partial<ITryMe<E>> = {}) => {
     }
     finally {
         finalize && finalize();
+
+        if (hadErr) {
+
+        }
     }
 }
 

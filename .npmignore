@@ -1,10 +1,11 @@
 .vscode/
+
 bin/
 build/
 mine-private/
-node_modules/
 dist/dev/
-dist/*.spec
+dist/*.spec*
 src/
+
 jasmine.json
 tsconfig.json
