@@ -3,7 +3,7 @@
 ```
 
 # ntn-try-me
-[![Npm](https://img.shields.io/npm/v/ntn-try-me?color=blue&style=flat-square)](https://www.npmjs.com/package/ntn-try-me) 
+[![npm](https://img.shields.io/npm/v/ntn-try-me?color=blue&style=flat-square)](https://www.npmjs.com/package/ntn-try-me) 
 [![Minified](https://img.shields.io/badge/MINIFIED%20%2B%20GZIPPED-2KB%20+/---blue?style=flat-square)]() 
 [![MIT](https://img.shields.io/badge/MIT-blue?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 
