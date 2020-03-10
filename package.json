@@ -1,6 +1,6 @@
 {
   "name": "ntn-try-me",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Eliminate regular `try-catch-finally`",
   "type": "module",
   "module": "dist/index.js",
