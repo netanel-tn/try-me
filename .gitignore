@@ -1,4 +1,5 @@
 ﻿bundle/
+build/
 mine-private/*
 !mine-private/.gitkeep
 node_modules/
