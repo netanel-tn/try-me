@@ -9,10 +9,8 @@
   "author": "Netanel Tal Nizri",
   "license": "MIT",
   "scripts": {
-    "npm-hub": "node --experimental-modules --no-warnings build/npm-hub",
-    "prebuild": "tsc",
     "build": "tsc",
-    "---------------------------------": "",
+    "npm-hub": "node --experimental-modules --no-warnings build/npm-hub",
     "minify": "npm run npm-hub -- --type=minify",
     "bundle": "npm run npm-hub -- --type=bundle",
     "bundleDev": "npm run npm-hub -- --type=bundleDev",
@@ -35,8 +33,10 @@
     "url": "github:netanel-tn/try-me"
   },
   "devDependencies": {
+    "@types/glob": "7.1.1",
     "@types/jasmine": "3.5.9",
     "@types/node": "13.9.0",
+    "@types/npm": "2.0.31",
     "@types/webpack": "4.41.7",
     "npm": "6.14.2",
     "moment": "2.24.0",

@@ -4,12 +4,13 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "",
     "declaration": true,
     "strict": true
   },
   "exclude": [
     "mine-private",
+    "build",
     "dist"
   ]
 }

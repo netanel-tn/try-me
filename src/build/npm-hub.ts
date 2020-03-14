@@ -1,7 +1,6 @@
-import glob from 'glob';
-import terser from 'terser';
-import bundle from 'webpack';
-import npm from 'npm';
+import * as glob from 'glob';
+import * as terser from 'terser';
+import * as bundle from 'webpack';
 import { argv, exit } from 'process';
 import { LINE, UTF, ERR_ARGV, newDateMagenta, pathFile, begin } from './util.js';
 import { readFileSync, writeFileSync } from 'fs';
@@ -13,7 +12,7 @@ const { minify } = terser;
 const BUNDLE_FILE_NAME = 'bundle.js';
 
 class VerHandling {
-  static Verify(argv) {
+  static Verify(argv: string[]) {
     if (argv.find(x => x === 'v' || x === '--v')) { // `v` Might be Temp
       const readFile = readFileSync('./package.json', UTF);
       const { version: v } = JSON.parse(readFile);
@@ -25,7 +24,7 @@ class VerHandling {
 }
 
 class TypeHandling {
-  static Verify(argv) {
+  static Verify(argv: string[]) {
     if (!argv) throw new Error(ERR_ARGV);
 
     const type = argv.find(x => x.startsWith('--type='));
@@ -59,8 +58,8 @@ const minifyFn = () => {
   finalizeFn();
 };
 
-const bundleFn = type => {
-  const igniteFn = prepareBundle => prepareBundle.run(() => finalizeFn());
+const bundleFn = (type: 'bundle' | 'bundleDev') => {
+  const igniteFn = (prepareBundle: any) => prepareBundle.run(() => finalizeFn());
 
   switch (type) {
     case 'bundle': {
