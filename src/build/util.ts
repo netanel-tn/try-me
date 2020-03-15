@@ -1,9 +1,12 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import 'colors';
 
 const dirName = resolve(dirname(fileURLToPath(import.meta.url)), '../');
+
+export type BundleType = 'bundle' | 'bundleDev';
+export type NpmHubType = BundleType & 'minify';
 
 export const LINE = '--------------';
 export const UTF = 'utf8';

@@ -1,15 +1,8 @@
-import * as glob from 'glob';
-import * as terser from 'terser';
-import * as bundle from 'webpack';
 import { argv, exit } from 'process';
-import { LINE, UTF, ERR_ARGV, newDateMagenta, pathFile, begin } from './util.js';
-import { readFileSync, writeFileSync } from 'fs';
-
-// -------------- Fix --------------
-const { sync } = glob;
-const { minify } = terser;
-
-const BUNDLE_FILE_NAME = 'bundle.js';
+import { LINE, UTF, ERR_ARGV, newDateMagenta, begin, NpmHubType } from './util.js';
+import { readFileSync } from 'fs';
+import Minify from './minify.js';
+import Bundle from './bundle.js';
 
 class VerHandling {
   static Verify(argv: string[]) {
@@ -24,89 +17,29 @@ class VerHandling {
 }
 
 class TypeHandling {
-  static Verify(argv: string[]) {
-    if (!argv) throw new Error(ERR_ARGV);
-
+  static Verify(argv: string[]): NpmHubType {
     const type = argv.find(x => x.startsWith('--type='));
 
     if (!type) throw new Error(ERR_ARGV);
 
-    return type.replace('--type=', '');
+    return <NpmHubType>type.replace('--type=', '');
   }
 }
 
 // ...
 
 VerHandling.Verify(argv);
-const type = TypeHandling.Verify(argv);
-const allJ = sync('./dist/*.js');
-
-// ...
-
-const finalizeFn = () => console.log(LINE, 'END  ', newDateMagenta(), LINE);
-
-const minifyFn = () => {
-  const filterAllJ = allJ.filter(x => !x.includes(BUNDLE_FILE_NAME))
-    .filter(x => !x.endsWith('.spec.js'));
-
-  filterAllJ.forEach(x => {
-    const readFile = minify(readFileSync(x, UTF), {}).code;
-
-    writeFileSync(x, readFile, UTF);
-  });
-
-  finalizeFn();
-};
-
-const bundleFn = (type: 'bundle' | 'bundleDev') => {
-  const igniteFn = (prepareBundle: any) => prepareBundle.run(() => finalizeFn());
-
-  switch (type) {
-    case 'bundle': {
-      const prepareBundle = bundle({
-        mode: 'production',
-        entry: './dist/index.js',
-        output: {
-          ...pathFile('bundle', BUNDLE_FILE_NAME),
-          library: 'ntn_try_me',
-          libraryTarget: 'var'
-        },
-        plugins: [
-          new bundle.BannerPlugin('=== ntn-try-me ===' + '\nBy Netanel Tal Nizri')
-        ]
-      });
-
-      return igniteFn(prepareBundle);
-    }
-    case 'bundleDev': {
-      const prepareBundle = bundle({
-        mode: 'production',
-        entry: allJ,
-        output: {
-          ...pathFile('dist/dev', 'bundle'),
-          library: 'ntn_try_me',
-          libraryTarget: 'var'
-        }
-      });
-
-      return igniteFn(prepareBundle);
-    }
-  }
-};
-
-// ...
+const type: NpmHubType = TypeHandling.Verify(argv);
 
 begin();
 
 switch (type) {
   case 'bundle':
   case 'bundleDev':
-    bundleFn(type);
+    Bundle.run(type);
     break;
   case 'minify':
-    minifyFn();
-    break;
-  case 'multiple':
+    Minify.run();
     break;
   default:
     throw new Error(ERR_ARGV);

@@ -3,10 +3,13 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "baseUrl": "./",
     "rootDir": "src",
     "outDir": "",
     "declaration": true,
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "mine-private",
