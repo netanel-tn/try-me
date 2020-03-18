@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import glob from 'glob';
-import { LINE, newDateMagenta, pathFile, begin, finalizeFn, BundleType } from './util.js';
+import { LINE, newDateMagenta, pathFile, begin, finalizeFn, BundleType } from './util';
 
 const { sync } = glob;
 

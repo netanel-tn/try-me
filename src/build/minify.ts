@@ -3,7 +3,7 @@ import glob from 'glob';
 import * as allGL from 'glob';
 import { readFileSync, writeFileSync } from 'fs';
 import { exit } from 'process';
-import { LINE, UTF, newDateMagenta, begin, finalizeFn } from './util.js';
+import { LINE, UTF, newDateMagenta, begin, finalizeFn } from './util';
 
 export default class Minify {
     static run() {

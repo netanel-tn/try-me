@@ -1,8 +1,8 @@
 import { argv, exit } from 'process';
-import { LINE, UTF, ERR_ARGV, newDateMagenta, begin, NpmHubType } from './util.js';
 import { readFileSync } from 'fs';
-import Minify from './minify.js';
-import Bundle from './bundle.js';
+import { LINE, UTF, ERR_ARGV, newDateMagenta, begin, NpmHubType } from './util';
+import Minify from './minify';
+import Bundle from './bundle';
 
 class VerHandling {
   static Verify(argv: string[]) {

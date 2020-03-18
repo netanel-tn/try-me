@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "npm-hub": "node --experimental-modules --no-warnings build/npm-hub",
+    "npm-hub": "node --experimental-modules --experimental-specifier-resolution=node --no-warnings build/npm-hub",
     "minify": "npm run npm-hub -- --type=minify",
     "bundle": "npm run npm-hub -- --type=bundle",
     "bundleDev": "npm run npm-hub -- --type=bundleDev",

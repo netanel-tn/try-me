@@ -10,6 +10,8 @@ You will be able to gain the following:
 * Less code
 * A more intelligent code
 * More flexibility
+* All in Typescript
+* With ESM \ ES Modules
 
 ## Get ready
 `npm i ntn-try-me`

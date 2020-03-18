@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "npm-hub": "javascript"
     },
     "files.exclude": {
         ".npmrc": true,
