@@ -1,8 +1,12 @@
-import webpack from 'webpack';
+import webpack, { Output } from 'webpack';
 import glob from 'glob';
 import { LINE, newDateMagenta, pathFile, begin, finalizeFn, BundleType } from './util';
 
 const { sync } = glob;
+const lib: Output = {
+    library: 'ntn_try_me',
+    libraryTarget: 'var'
+};
 
 export default class Bundle {
     static run(type: BundleType) {
@@ -22,11 +26,10 @@ export default class Bundle {
             entry: './dist/index.js',
             output: {
                 ...pathFile('bundle', 'bundle.js'),
-                library: 'ntn_try_me',
-                libraryTarget: 'var'
+                ...lib
             },
             plugins: [
-                new webpack.BannerPlugin('=== ntn-try-me ===' + '\nBy Netanel Tal Nizri')
+                new webpack.BannerPlugin(this._banner)
             ]
         });
 
@@ -39,11 +42,15 @@ export default class Bundle {
             entry: sync('./dist/*.js'),
             output: {
                 ...pathFile('dist/dev', 'bundle'),
-                library: 'ntn_try_me',
-                libraryTarget: 'var'
+                ...lib
             }
         });
 
         prepareBundle.run(() => finalizeFn())
+    }
+
+    private static get _banner() {
+        return '=== ntn-try-me ==='
+            + '\n' + 'By Netanel Tal Nizri';
     }
 }
