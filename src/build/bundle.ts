@@ -9,14 +9,12 @@ const lib: Output = {
 };
 
 export default class Bundle {
-    static run(type: BundleType) {
-        switch (type) {
+    static run(bundleType: BundleType) {
+        switch (bundleType) {
             case 'bundle':
-                this._makeBundle();
-                break;
+                return this._makeBundle();
             case 'bundleDev':
-                this._makeBundleDev();
-                break;
+                return this._makeBundleDev();
         }
     }
 
