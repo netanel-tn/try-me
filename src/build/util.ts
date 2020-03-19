@@ -3,7 +3,7 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import 'colors';
 
-const dirName = resolve(dirname(fileURLToPath(import.meta.url)), '../');
+export const dirName = resolve(dirname(fileURLToPath(import.meta.url)), '../');
 
 export type BundleType = 'bundle' | 'bundleDev';
 export type NpmHubType = BundleType & 'minify';
