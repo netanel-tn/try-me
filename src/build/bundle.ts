@@ -1,9 +1,21 @@
-import webpack, { Output } from 'webpack';
 import glob from 'glob';
-import { LINE, newDateMagenta, pathFile, begin, finalizeFn, BundleType } from './util';
+import webpack, { Output } from 'webpack';
+import { resolve } from 'path';
+import { pathToFileURL } from 'url';
+import { pathFile, finalizeFn, BundleType, MAIN_DIR_PATH, NA } from './util';
+import { exit } from 'process';
+
+/**
+  * Default With Version
+  */
+interface IDefWithVer {
+    readonly default: {
+        readonly version: string
+    }
+}
 
 const { sync } = glob;
-const lib: Output = {
+const defLibrary: Output = {
     library: 'ntn_try_me',
     libraryTarget: 'var'
 };
@@ -18,16 +30,16 @@ export default class Bundle {
         }
     }
 
-    private static _makeBundle() {
+    private static async _makeBundle() {
         const prepareBundle = webpack({
             mode: 'production',
             entry: './dist/index.js',
             output: {
                 ...pathFile('bundle', 'bundle.js'),
-                ...lib
+                ...defLibrary
             },
             plugins: [
-                new webpack.BannerPlugin(this._banner)
+                new webpack.BannerPlugin(await this._buildBannerText())
             ]
         });
 
@@ -40,15 +52,26 @@ export default class Bundle {
             entry: sync('./dist/*.js'),
             output: {
                 ...pathFile('dist/dev', 'bundle'),
-                ...lib
+                ...defLibrary
             }
         });
 
         prepareBundle.run(() => finalizeFn())
     }
 
-    private static get _banner() {
-        return '=== ntn-try-me ==='
-            + '\n' + 'By Netanel Tal Nizri';
+    private static async _buildBannerText() {
+        try {
+            const pjFilePath = pathToFileURL(resolve(MAIN_DIR_PATH, 'package.json')).href;
+            const { default: { version: v } } = await import(pjFilePath) as IDefWithVer;
+
+            return '=== ntn-try-me ==='
+                + '\n' + 'v' + v
+                + '\n' + 'By Netanel Tal Nizri';
+        }
+        catch {
+            console.warn('WARN:'.yellow, '_buildBannerText'.bold, 'have failed.');
+
+            return NA;
+        }
     }
 }

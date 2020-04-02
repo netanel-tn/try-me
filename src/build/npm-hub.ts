@@ -1,8 +1,11 @@
 import { argv, exit } from 'process';
 import { readFileSync } from 'fs';
-import { LINE, UTF, ERR_ARGV, newDateMagenta, begin, NpmHubType } from './util';
+import { UTF, begin, NpmHubType } from './util';
 import Minify from './minify';
 import Bundle from './bundle';
+import 'colors';
+
+const ERR_ARGV = 'argv'.bold + ' are invalid!';
 
 class VerHandling {
   static Verify(argv: string[]) {
@@ -29,18 +32,18 @@ class TypeHandling {
 // ...
 
 VerHandling.Verify(argv);
-const type: NpmHubType = TypeHandling.Verify(argv);
+const npmHubType: NpmHubType = TypeHandling.Verify(argv);
 
 begin();
 
-switch (type) {
+switch (npmHubType) {
   case 'bundle':
   case 'bundleDev':
-    Bundle.run(type);
+    Bundle.run(npmHubType);
     break;
   case 'minify':
     Minify.run();
     break;
   default:
-    throw new Error(ERR_ARGV);
+    console.error('ERR:'.red, ERR_ARGV);
 }
