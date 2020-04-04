@@ -1,15 +1,15 @@
 import { HadErr } from './util';
 
 export interface ITryMe<E = any> {
-    valid: () => void,
-    fail: (e: E) => void,
-    finalize: () => void,
-    debugLevel: 'quiet',
+    valid: () => void;
+    fail: (e: E) => void;
+    finalize: () => void;
+    debugLevel: 'quiet';
 
     // Fail Handling
-    ifFailFireErr: boolean,
-    fireErrUniqType: any,
-    fireErrData: any
+    ifFailFireErr: boolean;
+    fireErrUniqType: any;
+    fireErrData: any;
 }
 
 export const tryMe = <E>(tryThat: Function, meta: Partial<ITryMe<E>> = {}) => {

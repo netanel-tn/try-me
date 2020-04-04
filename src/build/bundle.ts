@@ -10,8 +10,8 @@ import { exit } from 'process';
   */
 interface IDefWithVer {
     readonly default: {
-        readonly version: string
-    }
+        readonly version: string;
+    };
 }
 
 const { sync } = glob;
