@@ -2,6 +2,7 @@
 mine-private/*
 !mine-private/.gitkeep
 node_modules/
+package-lock.json
 
 /build
 /dist
