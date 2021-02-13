@@ -1,6 +1,5 @@
 import moment from 'moment';
 import { resolve } from 'path';
-import 'colors';
 
 // -------------- Type --------------
 export type BundleType = 'bundle' | 'bundleDev';
