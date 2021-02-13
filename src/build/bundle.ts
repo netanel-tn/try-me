@@ -1,6 +1,6 @@
-import glob from 'glob';
-import webpack, { Output } from 'webpack';
+import webpack from 'webpack';
 import { resolve } from 'path';
+import { sync } from 'glob';
 import { pathToFileURL } from 'url';
 import { pathFile, finalizeFn, BundleType, MAIN_DIR_PATH, NA } from './util';
 import { exit } from 'process';
@@ -14,8 +14,7 @@ interface IDefWithVer {
     };
 }
 
-const { sync } = glob;
-const defLibrary: Output = {
+const defLibrary: any = {
     library: 'ntn_try_me',
     libraryTarget: 'var'
 };
@@ -46,6 +45,7 @@ export default class Bundle {
         prepareBundle.run(() => finalizeFn());
     }
 
+    // Temp
     private static _makeBundleDev() {
         const prepareBundle = webpack({
             mode: 'production',
