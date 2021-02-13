@@ -43,7 +43,7 @@ export default class Bundle {
             ]
         });
 
-        prepareBundle.run(() => finalizeFn())
+        prepareBundle.run(() => finalizeFn());
     }
 
     private static _makeBundleDev() {
@@ -56,7 +56,7 @@ export default class Bundle {
             }
         });
 
-        prepareBundle.run(() => finalizeFn())
+        prepareBundle.run(() => finalizeFn());
     }
 
     private static async _buildBannerText() {
