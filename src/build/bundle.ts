@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import { resolve } from 'path';
-import { sync } from 'glob';
+import glob from 'glob';
 import { pathToFileURL } from 'url';
 import { pathFile, finalizeFn, BundleType, MAIN_DIR_PATH, NA } from './util';
 import { exit } from 'process';
@@ -47,6 +47,7 @@ export default class Bundle {
 
     // Temp
     private static _makeBundleDev() {
+        const { sync } = glob;
         const prepareBundle = webpack({
             mode: 'production',
             entry: sync('./dist/*.js'),
